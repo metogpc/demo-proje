@@ -32,7 +32,7 @@ Giriş yapıldıktan sonra filmlerimizin listesi karşımıza çıkacaktır.
 4. Filmi değiştirmek , silmek , incelemek ve oyuncu eklemek için butonlarımız
 ![işlemler](img/filmIslemleri.png)
 5. Oyuncu ekleme ekranımızda seçili filmimize göre ekleme yapılmaktadır
-
+6. İncele butonuyla Filmlerimizi inceleyebilir , Film de bulunan oyuncuları görüntüleyebilir ve Oyuncu adına göre arama yapılmaktadır
 \
 \
 \
