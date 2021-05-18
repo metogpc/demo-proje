@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <title>Film Değiştir</title>
+    <style type="text/css">
+    .center {
+		  margin: auto;
+		  width: 50%;
+		  border: 1px solid blue;
+		  padding: 35px;
+		  border-radius: 30px
+		}
+		
+		select {
+			width: 10rem;
+		}
+		input{
+			border-radius: 6px;
+			border: 1px solid gray;
+		}
+    </style>
+</head>
+<body>
+<div class="center">
+		<br>
+		<h1 style="text-align: center">Film Değiştir</h1>
+		<br>
+		<form  th:action="@{/create}" th:object="${film}" method="post">
+			<table  class="table table-hover" >	
+				<td><input type="hidden"   th:field="*{id}"/></td>
+				<tr>
+					<td>Ad</td>
+					<td><input type="text"  th:field="*{ad}"/></td>
+				</tr>
+				<tr>
+					<td>Yıl</td>
+					<td><input type="text"	 th:field="*{yayin_yil}" /></td>
+				</tr>
+				<tr>
+					<td>Açıklama</td>
+					<td><input type="text"  th:field="*{aciklama}" /></td>
+				</tr>
+				<tr>
+					<td>Medya</td>
+					<td><input type="text"  th:field="*{medya}" /></td>
+				</tr>
+				<tr>
+					<td>Dil</td>
+					<td>
+						<select th:field="*{dil}">
+						    <option value="Türkçe">Türkçe</option>
+						    <option value="İngilizce">İngilizce</option>
+						  	<option value="Fransızca">Fransızca</option>
+							<option value="Almanca">Almanca</option>
+					</td>
+				</tr>
+				<tr>
+					<td>Tur</td>
+					<td>
+						<select th:field="*{tur}" style="width: 10rem;">
+						    <option value="Aksiyon">Aksiyon</option>
+						    <option value="Komedi">Komedi</option>
+						  	<option value="Drama">Drama</option>
+							<option value="Tarih">Tarih</option>
+					</td>
+				</tr>
+				
+			</table>
+			<!-- <input type="submit" value="add" style="border-bottom: 1px solid blue;"/> -->
+			<button type="submit" value="add" class="btn btn-success"> Değiştir </button>
+			</form>
+	</div>
+</body>

@@ -1,0 +1,14 @@
+.liste{
+	padding: 2rem;
+	margin-left: 7rem;
+	margin-right:7rem;
+	border: 1px solid black;
+}
+
+.butonlar{
+	width: 20px;
+}
+
+a{
+	text-decoration:none;
+}

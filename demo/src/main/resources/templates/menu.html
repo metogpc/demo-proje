@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Menu</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+<link rel="stylesheet" href="menu.css">
+</head>
+<body>
+ <div class="alert alert-success" role="alert">
+ 	<a th:href="@{/create}" class="alert-link" style="color: red;">Yeni Film</a> 	
+ 	|
+ 	<a th:href="@{/menuSirali}" class="alert-link" style="color: black">Yıla Göre Sırala</a>
+ 	|
+ 	<a th:href="@{/menu}" class="alert-link" style="color: black">Normal Sırala</a>
+</div>
+ <br>
+ <div class="liste">
+ 	<table  class="table table-hover" id="tablo">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">Ad</th>
+      <th scope="col">Yıl</th>
+      <th scope="col">Aciklama</th>
+      <th scope="col">Medya</th>
+      <th scope="col">Dil</th>
+      <th scope="col">Tur</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      <th scope="col">Oyuncu</th>
+    </tr>
+  </thead>
+  <tbody >
+      <div class="col-4"><input type="text" id="search" class="form-control mb-3" placeholder="Arama"></div>
+    <tr th:each="film : ${filmList}">
+      <td th:text="${film.ad}">Ad</td>
+      <td th:text="${film.yayin_yil}">Yıl</td>
+      <td th:text="${film.aciklama}" >Aciklama</td>
+	  <td th:text="${film.medya}" >Medya</td>
+	  <td th:text="${film.dil}" >Dil</td>
+	  <td th:text="${film.tur}" >tur</td>
+	  <td class="butonlar">
+		 <button type="button" class="btn btn-light"><a th:href="@{/edit/{id}(id=${film.id})}" style="color: black;" >Edit</a></button>
+	  </td>
+	  <td class="butonlar">
+	     <button type="button" class="btn btn-danger"><a th:href="@{/menu/delete/{id}(id=${film.id})}" style="color: white;">Delete</a></button></td>
+     <td class="butonlar">
+		 <button type="button" class="btn btn-secondary"><a th:href="@{/film/{id}(id=${film.id})}"  style="color: white;">İncele</a></button>
+	</td>
+	<td class="butonlar">
+		 <button type="button" class="btn btn-success"><a th:href="@{/addOyuncu/{id}(id=${film.id})}"  style="color: white;">Ekle</a></button>
+	</td>
+    </tr>
+  </tbody>
+   </table>  
+    <script>
+	    var input = document.getElementById("search");
+	    
+	    input.addEventListener('keyup',  function searchFunction(){
+	        var filter, table, tr, td, td2, txtValue, txtValue2;
+	
+	        filter = input.value.toUpperCase();
+	        table = document.getElementById("tablo");
+	        tr = document.getElementsByTagName("tr");
+	
+	        for(var i=0; i < tr.length; i++){
+	            td = tr[i].getElementsByTagName("td")[0];
+	            td2 =  tr[i].getElementsByTagName("td")[5];
+	            console.log(td);
+	            console.log(td2);
+	            if(td || td2){
+	                txtValue = td.textContent || td.innerText;
+	                txtValue2 = td2.textContent || td2.innerText;
+	                if(txtValue.toUpperCase().indexOf(filter) > -1 || txtValue2.toUpperCase().indexOf(filter) > -1){
+	                    tr[i].style.display = "";
+	                  } else {
+	                    tr[i].style.display = "none";
+	                  }
+	            }
+	        }
+	    })
+
+    </script> 
+</body>
+</html>
